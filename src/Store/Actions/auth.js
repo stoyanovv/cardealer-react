@@ -81,6 +81,7 @@ export const auth = (data, isSignup) => {
                      token = entry[1]
                   }
                }
+               console.log(token)
                if (token && url === 'login') {
                   url = 'signin'
                   Data.post(url, data)
