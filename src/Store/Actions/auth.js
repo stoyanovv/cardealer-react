@@ -74,13 +74,12 @@ export const auth = (data, isSignup) => {
       else if (url === 'login') {
          Data.getToken(url, data)
             .then(response => {
-               console.log(response)
                let token = ''
                for (let entry of response.headers.entries()) {
+                  console.log(entry)
                   if (entry[0] === 'authorization') {
                      token = entry[1]
                   }
-                  console.log('asd')
                }
                if (token && url === 'login') {
                   url = 'signin'

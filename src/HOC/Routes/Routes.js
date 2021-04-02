@@ -10,6 +10,8 @@ import NoSuchPage from "../../Components/Pages/NoSuchPage/NoSuchPage";
 import Cart from "../../Components/Pages/CartPage/Cart";
 import Shop from "../../Components/Pages/Shop/Shop";
 import CarInfo from "../../Components/UI/Car/CarInfo";
+import Admin from "../../Containers/Auth/Admin/Admin";
+import AdminRoute from './AdminRoute';
 
 const Routes = (props) => {
    console.log(props.isAuth)
@@ -25,6 +27,7 @@ const Routes = (props) => {
             <Route path="/carinfo/:id" render={(p) => <CarInfo {...p} />} />
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={Signup} />
+            <AdminRoute path="/admin" component={Admin} />
             <Route path="/" exact component={HomePage} />
             <Route component={NoSuchPage} />
          </Switch>

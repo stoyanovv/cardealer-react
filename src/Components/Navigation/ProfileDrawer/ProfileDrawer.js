@@ -3,6 +3,7 @@ import styles from './ProfileDrawer.module.css'
 import Auxi from '../../../HOC/Auxi/Auxi'
 import BackDrop from '../../UI/BackDrop/BackDrop'
 import { Link } from 'react-router-dom'
+import Auth from '../../../Containers/Auth/Auth'
 
 const ProfileDrawer = (props) => {
    let attachedStyles = [styles.ProfileDrawer, styles.Close]
@@ -14,6 +15,10 @@ const ProfileDrawer = (props) => {
          <BackDrop show={props.open} clicked={props.closed} />
          <div className={attachedStyles.join(' ')}>
             <div className={styles.ProfileLinks}>
+               {Auth.isAdmin() ?
+                  <div className={styles.Link} onClick={props.closed}>
+                     <Link to='/admin' >Админ</Link>
+                  </div> : null}
                <div className={styles.Link} onClick={props.closed}>
                   <Link to='/myProfile' >Профил</Link>
                </div>
