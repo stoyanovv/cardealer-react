@@ -47,7 +47,7 @@ class Admin extends Component {
                 elementType: 'input',
                 icon: faCar,
                 elementConfig: {
-                    type: 'email',
+                    type: 'text',
                     placeholder: 'Гориво'
                 },
                 value: '',
@@ -119,6 +119,27 @@ class Admin extends Component {
         formIsValid: false
     }
 
+    inputChangedHandler = (event, inputName) => {
+        const updatedInputs = {
+            ...this.state.inputs,
+            [inputName]: {
+                ...this.state.inputs[inputName],
+                value: event.target.value,
+                valid: checkValidity(event.target.value, this.state.inputs[inputName].validation),
+                touched: true
+            }
+        }
+        let formIsValid = true;
+        for (let inputIdentifier in updatedInputs) {
+
+            formIsValid = updatedInputs[inputIdentifier].valid && formIsValid && updatedInputs[inputIdentifier].touched;
+        }
+        this.setState({
+            inputs: updatedInputs,
+            formIsValid: formIsValid
+        })
+    }
+
     submitHandler = (event) => {
         event.preventDefault()
         const car = {
@@ -131,7 +152,7 @@ class Admin extends Component {
             imgUrl: this.state.inputs.imgUrl
         }
         console.log(car)
-        Data.post('addcar', Auth.isUserAuthenticated)
+        Data.post('addcar', { car: car }, Auth.isUserAuthenticated)
             .then(res => {
                 console.log(res)
             })
