@@ -1,10 +1,11 @@
 .Shop {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-color: rgb(224, 226, 228);
     padding: 20px;
+    min-height: 1160px;
 }
 
 .Cars {
@@ -43,4 +44,8 @@
      width: 100%;
      background-image: linear-gradient(to left bottom, #5c9210, #669d1b, #71a825, #7bb32e, #86be37);
      color: white;
+ }
+
+ .Button:hover {
+    cursor: pointer;
  }

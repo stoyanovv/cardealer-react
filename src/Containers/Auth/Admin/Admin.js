@@ -130,6 +130,7 @@ class Admin extends Component {
             price: this.state.inputs.price,
             imgUrl: this.state.inputs.imgUrl
         }
+        console.log(car)
         Data.post('addcar', Auth.isUserAuthenticated)
             .then(res => {
                 console.log(res)

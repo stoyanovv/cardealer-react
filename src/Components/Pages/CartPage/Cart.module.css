@@ -1,6 +1,7 @@
 .Cart {
     background-color: rgb(224, 226, 228);
     margin-top: -20px;
+    min-height: 1160px;
 }
 
 .Shop {

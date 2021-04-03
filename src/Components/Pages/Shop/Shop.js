@@ -63,14 +63,15 @@ export default class Shop extends Component {
             })
     }
 
-    searchHandler = () => {
+    searchHandler = (event) => {
+        event.preventDefault()
         const make = this.state.make.value
-        console.log(make)
-        Data.get('search', { make: make }, Auth.isUserAuthenticated)
+        console.log(this.state.make)
+        Data.post('search', { make: make }, Auth.isUserAuthenticated)
             .then(res => {
                 console.log(res)
-                const shop = res
                 const cars = []
+                const shop = res
                 shop.forEach(c => {
                     cars.push(
                         <Car
@@ -91,13 +92,32 @@ export default class Shop extends Component {
             })
     }
 
+    inputChangedHandler = (event) => {
+        const updatedInputs = {
+            make: {
+                value: event.target.value,
+                // valid: checkValidity(event.target.value, this.state.make.validation),
+                touched: true
+            }
+        }
+        let formIsValid = true;
+        for (let inputIdentifier in updatedInputs) {
+
+            formIsValid = updatedInputs[inputIdentifier].valid && formIsValid && updatedInputs[inputIdentifier].touched;
+        }
+        this.setState({
+            inputs: updatedInputs,
+            formIsValid: formIsValid
+        })
+    }
+
 
     render() {
         return (
             <div className={styles.Shop}>
                 <div className={styles.Search}>
                     Търси по марка:
-                    <Input
+                        <Input
                         name={this.state.id}
                         key={this.state.id}
                         icon={this.state.make.icon}
@@ -107,16 +127,19 @@ export default class Shop extends Component {
                         invalid={!this.state.make.valid}
                         shouldValidate={this.state.make.validation}
                         touched={this.state.make.touched}
-                    />
+                        changed={(event) => this.inputChangedHandler(event)} />
                     <div style={{ maxWidth: 80, margin: '0 auto' }}>
-                        <button className={styles.Button} onClick={this.searchHandler}>Търси</button>
+                        <button className={styles.Button} onClick={this.searchHandler} >Търси</button>
                     </div>
                 </div>
-                <div className={styles.Container}>
-                    <div className={styles.Cars}>
-                        {this.state.cars.map(car => (car))}
+
+                {this.state.cars.length > 0 ?
+                    <div className={styles.Container}>
+                        <div className={styles.Cars}>
+                            {this.state.cars.map(car => (car))}
+                        </div>
                     </div>
-                </div>
+                    : <h2>Няма намерени автомобили от тази марка</h2>}
             </div>
         );
     }
