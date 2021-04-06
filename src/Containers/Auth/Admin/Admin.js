@@ -82,6 +82,7 @@ class Admin extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    isNumeric: true
                 },
                 valid: false,
                 touched: false
@@ -142,17 +143,27 @@ class Admin extends Component {
 
     submitHandler = (event) => {
         event.preventDefault()
-        const car = {
-            make: this.state.inputs.make,
-            model: this.state.inputs.model,
-            fuel: this.state.inputs.fuel,
-            enginePower: this.state.inputs.enginePower,
-            year: this.state.inputs.year,
-            price: this.state.inputs.price,
-            imgUrl: this.state.inputs.imgUrl
-        }
+        const car = [
+            { make: this.state.inputs.make.value },
+            { model: this.state.inputs.model.value },
+            { fuel: this.state.inputs.fuel.value },
+            { enginePower: this.state.inputs.enginePower.value },
+            { year: this.state.inputs.year.value },
+            { price: this.state.inputs.price.value },
+            { imgUrl: this.state.inputs.imgUrl.value }
+        ]
+
         console.log(car)
-        Data.post('addcar', { car: car }, Auth.isUserAuthenticated)
+        Data.post('admin/addcar',
+            {
+                make: this.state.inputs.make.value,
+                model: this.state.inputs.model.value,
+                fuel: this.state.inputs.fuel.value,
+                enginePower: this.state.inputs.enginePower.value,
+                year: this.state.inputs.year.value,
+                price: this.state.inputs.price.value,
+                imgUrl: this.state.inputs.imgUrl.value
+            }, Auth.isUserAuthenticated)
             .then(res => {
                 console.log(res)
             })
@@ -175,6 +186,7 @@ class Admin extends Component {
                 elementType={formElement.config.elementType}
                 elementConfig={formElement.config.elementConfig}
                 value={formElement.config.value}
+                invalid={!formElement.config.valid}
                 shouldValidate={formElement.config.validation}
                 touched={formElement.config.touched}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)} />)

@@ -14,6 +14,7 @@ const NavItems = (props) => {
          {logInButton}
          <NavItem clicked={props.clicked} footer={props.footer} path="/about">За нас</NavItem>
          <NavItem clicked={props.clicked} footer={props.footer} path="/contacts">Контакти</NavItem>
+         <NavItem clicked={props.clicked} footer={props.footer} path="/rules">Правила</NavItem>
       </ul>)
    if (props.isAuth) {
       navItems =
@@ -21,6 +22,7 @@ const NavItems = (props) => {
             <NavItem clicked={props.clicked} footer={props.footer} path="/shop">Пазарувай</NavItem>
             <NavItem clicked={props.clicked} footer={props.footer} path="/about">За нас</NavItem>
             <NavItem clicked={props.clicked} footer={props.footer} path="/contacts">Контакти</NavItem>
+            <NavItem clicked={props.clicked} footer={props.footer} path="/rules">Правила</NavItem>
          </ul>)
    }
    return navItems

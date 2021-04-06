@@ -7,6 +7,8 @@ import Data from '../../../Data/Data'
 import Button from '../Buttons/Button/Button'
 import styles from './CarInfo.module.css'
 import * as actions from '../../../Store/Actions/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCar } from '@fortawesome/free-solid-svg-icons'
 
 class CarInfo extends Component {
     state = {

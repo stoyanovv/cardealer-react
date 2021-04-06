@@ -76,12 +76,10 @@ export const auth = (data, isSignup) => {
             .then(response => {
                let token = ''
                for (let entry of response.headers.entries()) {
-                  console.log(entry)
                   if (entry[0] === 'authorization') {
                      token = entry[1]
                   }
                }
-               console.log(token)
                if (token && url === 'login') {
                   url = 'signin'
                   Data.post(url, data)

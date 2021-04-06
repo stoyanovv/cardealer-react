@@ -9,6 +9,7 @@ import MyProfilePage from "../../Components/Pages/MyProfilePage/MyProfilePage";
 import NoSuchPage from "../../Components/Pages/NoSuchPage/NoSuchPage";
 import Cart from "../../Components/Pages/CartPage/Cart";
 import Shop from "../../Components/Pages/Shop/Shop";
+import RulesPage from "../../Components/Pages/RulesPage/RulesPage";
 import CarInfo from "../../Components/UI/Car/CarInfo";
 import Admin from "../../Containers/Auth/Admin/Admin";
 import AdminRoute from './AdminRoute';
@@ -21,6 +22,7 @@ const Routes = (props) => {
             <Route path="/about" render={(p) => <AboutUsPage {...p} />} />
             <Route path="/contacts" component={ContactsPage} />
             <Route path="/myProfile" component={MyProfilePage} />
+            <Route path="/rules" component={RulesPage} />
             <Route path="/logout" component={Logout} />
             <Route path="/cart" component={Cart} />
             <Route path="/shop" component={Shop} />
@@ -29,6 +31,7 @@ const Routes = (props) => {
             <Route path="/signup" component={Signup} />
             <AdminRoute path="/admin" component={Admin} />
             <Route path="/" exact component={HomePage} />
+            <Route path="/rules" component={RulesPage} />
             <Route component={NoSuchPage} />
          </Switch>
       )
@@ -36,6 +39,8 @@ const Routes = (props) => {
    else {
       return (
          <Switch>
+            <Route path="/shop" component={Shop} />
+            <Route path="/rules" component={RulesPage} />
             <Route path="/about" render={(p) => <AboutUsPage {...p} />} />
             <Route path="/contacts" component={ContactsPage} />
             <Route path="/login" component={LogIn} />
