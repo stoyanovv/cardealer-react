@@ -80,7 +80,7 @@ export const auth = (data, isSignup) => {
                      token = entry[1]
                   }
                }
-               if (token && url === 'login') {
+               if (url === 'login') {
                   url = 'signin'
                   Data.post(url, data)
                      .then(res => {

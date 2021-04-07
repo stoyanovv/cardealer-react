@@ -13,6 +13,7 @@ import RulesPage from "../../Components/Pages/RulesPage/RulesPage";
 import CarInfo from "../../Components/UI/Car/CarInfo";
 import Admin from "../../Containers/Auth/Admin/Admin";
 import AdminRoute from './AdminRoute';
+import ConfirmEmail from "../../Components/Pages/ConfirmEmailPage/ConfirmEmail";
 
 const Routes = (props) => {
    console.log(props.isAuth)
@@ -43,6 +44,7 @@ const Routes = (props) => {
             <Route path="/rules" component={RulesPage} />
             <Route path="/about" render={(p) => <AboutUsPage {...p} />} />
             <Route path="/contacts" component={ContactsPage} />
+            <Route path="/confirm" component={ConfirmEmail} />
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={Signup} />
             <Route path="/" exact component={HomePage} />
