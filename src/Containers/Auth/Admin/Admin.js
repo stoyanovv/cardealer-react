@@ -5,7 +5,8 @@ import styles from './Admin.module.css'
 import { faCar, faDollarSign, faEnvelope, faVolleyballBall } from '@fortawesome/free-solid-svg-icons';
 import Input from '../../../Components/UI/Input/Input';
 import Button from '../../../Components/UI/Buttons/Button/Button';
-import Auth from '../Auth';
+import * as actions from '../../../Store/Actions/index'
+import { connect } from 'react-redux';
 
 
 class Admin extends Component {
@@ -96,8 +97,7 @@ class Admin extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
-                    isNumeric: true
+                    required: true
                 },
                 valid: false,
                 touched: false
@@ -163,8 +163,15 @@ class Admin extends Component {
                 year: this.state.inputs.year.value,
                 price: this.state.inputs.price.value,
                 imgUrl: this.state.inputs.imgUrl.value
-            }, Auth.isUserAuthenticated)
+            })
             .then(res => {
+                if (res.success) {
+                    this.props.setSnackbar('success', res.message)
+                }
+                else if (!res.success) {
+                    this.props.setSnackbar('error', res.message)
+
+                }
                 console.log(res)
             })
     }
@@ -203,11 +210,17 @@ class Admin extends Component {
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <Button
-                        buttonType='LogIn' submit width='180px'>Добави авотомобил</Button>
+                        buttonType='LogIn' submit width='180px' disabled={!this.state.formIsValid}>Добави авотомобил</Button>
                 </form>
             </div>
         );
     }
 }
 
-export default Admin;
+const mapDispatchToProps = dispatch => {
+    return {
+        setSnackbar: (type, message, open) => dispatch(actions.setSnackbar(type, message, open)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Admin)

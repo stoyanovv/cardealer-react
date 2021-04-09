@@ -26,6 +26,14 @@ const Input = (props) => {
          case 'date': validationError = 'Трябва да се посочи валидна рождена дата.'; break;
          case 'gender': validationError = 'Трябва да се посочи валиден пол'; break;
          case 'city': validationError = 'Трябва да се посочи валиден град'; break;
+         // 
+         case 'make': validationError = 'Трябва да се посочи валидна марка на автомобила.'; break;
+         case 'model': validationError = 'Трябва да се посочи валиден модел на автомобила.'; break;
+         case 'fuel': validationError = 'Трябва да се посочи вид говиво на автомобила.'; break;
+         case 'enginePower': validationError = 'Трябва да се посочи мощност на автомобила.'; break;
+         case 'price': validationError = 'Трябва да се посочи валидна цена на автомобила.'; break;
+         case 'imgUrl': validationError = 'Трябва да се посочи url на снимка.'; break;
+         case 'year': validationError = 'Трябва да се посочи валидна година на автомобила.'; break;
       }
    }
    switch (props.elementType) {

@@ -13,7 +13,7 @@ const getOptions = () => ({
 const handleJsonResponse = res => res.json()
 const applyAuthorizationHeader = (options, authenticated) => {
    if (authenticated) {
-      options.headers.token = Auth.getToken()
+      options.headers.Authorization = Auth.getToken()
       options.headers.userId = window.localStorage.getItem('userId')
    }
 }

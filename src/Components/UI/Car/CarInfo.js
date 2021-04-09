@@ -7,8 +7,6 @@ import Data from '../../../Data/Data'
 import Button from '../Buttons/Button/Button'
 import styles from './CarInfo.module.css'
 import * as actions from '../../../Store/Actions/index'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCar } from '@fortawesome/free-solid-svg-icons'
 
 class CarInfo extends Component {
     state = {
@@ -18,7 +16,7 @@ class CarInfo extends Component {
     }
 
     componentDidMount() {
-        Data.get('carinfo/' + this.state.carId, Auth.isUserAuthenticated)
+        Data.get('carinfo/' + this.state.carId)
             .then(res => {
                 const carInfo = res
                 this.setState({
@@ -28,7 +26,7 @@ class CarInfo extends Component {
     }
 
     buyHandler = () => {
-        Data.post('buycar/' + this.state.id, { carId: this.state.carId }, Auth.isUserAuthenticated)
+        Data.post('buycar/' + this.state.id, { carId: this.state.carId })
             .then(res => {
                 this.props.setSnackbar('success', res.message)
                 const carInfo = res
@@ -39,7 +37,7 @@ class CarInfo extends Component {
     }
 
     deleteHandler = () => {
-        Data.post('deletecar/' + this.state.id, { carId: this.state.carId }, Auth.isUserAuthenticated)
+        Data.post('deletecar/' + this.state.id, { carId: this.state.carId })
             .then(res => {
                 this.props.setSnackbar('info', res.message)
                 const carInfo = res

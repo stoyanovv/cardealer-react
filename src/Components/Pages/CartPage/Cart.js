@@ -23,7 +23,7 @@ export default class Cart extends Component {
         price: 0
     }
     componentDidMount() {
-        Data.get('boughtcars/' + this.state.id, Auth.isUserAuthenticated)
+        Data.get('boughtcars/' + this.state.id)
             .then(res => {
                 console.log(res)
                 const cart = res.cars

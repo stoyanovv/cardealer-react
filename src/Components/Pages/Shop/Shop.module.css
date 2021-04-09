@@ -6,13 +6,16 @@
     background-color: rgb(224, 226, 228);
     padding: 20px;
     min-height: 1160px;
+    flex-wrap: wrap;
 }
 
 .Cars {
-    display: grid;
+    /* display: grid;
     grid-template-rows: 300px 300px 300px 300px;
     grid-template-columns: 400px 400px 400px 400px;
-    margin: 30px;
+    margin: 30px; */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Container {
