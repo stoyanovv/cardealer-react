@@ -1,9 +1,7 @@
 import { faCar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Component } from 'react'
 import Auth from '../../../Containers/Auth/Auth'
 import Data from '../../../Data/Data'
-import Button from '../../UI/Buttons/Button/Button'
 import Car from '../../UI/Car/Car'
 import Input from '../../UI/Input/Input'
 import styles from './Shop.module.css'
@@ -69,10 +67,8 @@ export default class Shop extends Component {
     searchHandler = (event) => {
         event.preventDefault()
         const make = this.state.inputs.make.value
-        console.log(this.state.inputs.make)
         Data.post('search', { make: make }, Auth.isUserAuthenticated)
             .then(res => {
-                console.log(res)
                 const cars = []
                 const shop = res
                 shop.forEach(c => {

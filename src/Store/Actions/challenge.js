@@ -61,7 +61,6 @@ export const auth = (data, isSignup) => {
       }
       Data.post(url, data)
          .then(response => {
-            console.log(response)
             (response)
             if (response.success) {
                if (isSignup) {

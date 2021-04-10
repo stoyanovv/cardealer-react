@@ -34,6 +34,7 @@ const Input = (props) => {
          case 'price': validationError = 'Трябва да се посочи валидна цена на автомобила.'; break;
          case 'imgUrl': validationError = 'Трябва да се посочи url на снимка.'; break;
          case 'year': validationError = 'Трябва да се посочи валидна година на автомобила.'; break;
+         default: validationError = 'Трябва да се посочи url на снимка.'; break;
       }
    }
    switch (props.elementType) {
@@ -56,7 +57,7 @@ const Input = (props) => {
                value={props.value}
                onChange={props.changed}
                placeholder={props.placeholder} >{props.elementConfig.options.map(option => (
-                  <option key={option.value} value={option.value} disabled={option.disabled} selected={option.selected} hidden={option.hidden} >
+                  <option defaultValue={null} key={option.value} value={option.value} disabled={option.disabled} selected={option.selected} hidden={option.hidden} >
                      { option.displayValue}
                   </option>
                ))}

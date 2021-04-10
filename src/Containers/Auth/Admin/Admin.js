@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { checkValidity } from '../../../Shared/HelperFunctions';
 import Data from '../../../Data/Data'
 import styles from './Admin.module.css'
-import { faCar, faDollarSign, faEnvelope, faVolleyballBall } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import Input from '../../../Components/UI/Input/Input';
 import Button from '../../../Components/UI/Buttons/Button/Button';
 import * as actions from '../../../Store/Actions/index'
@@ -153,7 +153,6 @@ class Admin extends Component {
             { imgUrl: this.state.inputs.imgUrl.value }
         ]
 
-        console.log(car)
         Data.post('admin/addcar',
             {
                 make: this.state.inputs.make.value,
@@ -172,7 +171,6 @@ class Admin extends Component {
                     this.props.setSnackbar('error', res.message)
 
                 }
-                console.log(res)
             })
     }
 
@@ -200,10 +198,10 @@ class Admin extends Component {
         )
 
 
-        let errorMessage = null
-        if (this.props.error) {
-            errorMessage = (<p style={{ color: 'tomato' }}>{this.props.error}</p>)
-        }
+        // let errorMessage = null
+        // if (this.props.error) {
+        //     errorMessage = (<p style={{ color: 'tomato' }}>{this.props.error}</p>)
+        // }
         return (
             <div className={styles.Admin}>
                 <h2>Добавете автомобил в онлайн магазина</h2>

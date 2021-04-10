@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react'
 import React, { Component } from 'react'
-import Auth from '../../../Containers/Auth/Auth'
 import Data from '../../../Data/Data'
 import Car from '../../UI/Car/Car'
 import styles from './Cart.module.css'

@@ -1,4 +1,4 @@
-import { faBowlingBall, faCar, faFutbol, faTableTennis, faVolleyballBall, } from '@fortawesome/free-solid-svg-icons'
+import { faCar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import styles from './RulesPage.module.css'

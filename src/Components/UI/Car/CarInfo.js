@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-import Auth from '../../../Containers/Auth/Auth'
 import Data from '../../../Data/Data'
 import Button from '../Buttons/Button/Button'
 import styles from './CarInfo.module.css'

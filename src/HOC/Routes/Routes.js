@@ -16,7 +16,6 @@ import AdminRoute from './AdminRoute';
 import ConfirmEmail from "../../Components/Pages/ConfirmEmailPage/ConfirmEmail";
 
 const Routes = (props) => {
-   console.log(props.isAuth)
    if (props.isAuth) {
       return (
          <Switch>

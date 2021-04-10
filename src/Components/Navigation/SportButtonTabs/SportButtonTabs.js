@@ -7,7 +7,6 @@ const SportButtonTabs = (props) => {
 
    let sports = props.sports
    const sportsArray = []
-   console.log(sports)
    if (sports) {
       for (const key in sports) {
          sportsArray.push({ key: key, display: sports[key] })
