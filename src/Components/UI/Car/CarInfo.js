@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import Data from '../../../Data/Data'
 import Button from '../Buttons/Button/Button'
 import styles from './CarInfo.module.css'
@@ -31,6 +30,7 @@ class CarInfo extends Component {
                 this.setState({
                     carInfo: carInfo
                 })
+                this.props.history.push('/shop')
             })
     }
 
@@ -42,20 +42,17 @@ class CarInfo extends Component {
                 this.setState({
                     carInfo: carInfo
                 })
+                this.props.history.push('/cart')
             })
     }
 
     render() {
         let button = null
         if (!this.state.carInfo.bought) {
-            button = <Link to={"/shop"} >
-                <Button buttonType="Accept" clicked={this.buyHandler} >Купи сега</Button>
-            </Link>
+            button = <Button buttonType="Accept" clicked={this.buyHandler} >Купи сега</Button>
         }
         else {
-            button = <Link to={"/cart"} >
-                <Button buttonType="Decline" clicked={this.deleteHandler} >Премахни от покупки</Button>
-            </Link>
+            button = <Button buttonType="Decline" clicked={this.deleteHandler} >Премахни от покупки</Button>
         }
         return (
             <div className={styles.CarInfo}>
@@ -88,29 +85,4 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(CarInfo)
 
-// const CarInfo = (props) => {
 
-//     return (
-//         <div className={styles.CarInfo}>
-//             <div className={styles.ImgContainer}>
-//                 <img className={styles.Img} alt='no pic' src='https://cdn.car-recalls.eu/wp-content/uploads/2020/05/Audi-A6-2020-recall-rsg-fire-768x432.jpg'></img>
-//             </div>
-//             <div className={styles.Description}>
-//                 <span className={styles.Info}>Марка: {props.make}</span>
-//                 <span className={styles.Info}>Модел: {props.model}</span>
-//                 <span className={styles.Info}>Цена: {props.price}</span>
-//                 <span className={styles.Info}>Година: {props.price}</span>
-//             </div>
-//             <div className={styles.Description}>
-//                 <span className={styles.Info}>Гориво: {props.price}</span>
-//                 <span className={styles.Info}>Мотор: {props.price} кубика</span>
-//             </div>
-//             <span>
-
-//                 <Button buttonType="Accept">Купи сега</Button>
-//             </span>
-//         </div>
-//     );
-// }
-
-// export default CarInfo;
